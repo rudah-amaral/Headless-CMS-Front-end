@@ -1,1 +1,4 @@
 /dist
+
+# Strapi Type Declarations
+/src/types/*.d.ts
