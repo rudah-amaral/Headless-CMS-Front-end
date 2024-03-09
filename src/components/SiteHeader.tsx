@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, ScrollRestoration } from "react-router-dom";
 
 export default function SiteHeader() {
   return (
@@ -9,6 +9,7 @@ export default function SiteHeader() {
         </NavLink>
       </div>
       <Outlet />
+      <ScrollRestoration />
     </>
   );
 }
