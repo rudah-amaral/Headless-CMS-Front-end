@@ -1,15 +1,19 @@
 import { Link, useLoaderData } from "react-router-dom";
 import type { loaderData } from "./loader";
+import { useReadQuery } from "@apollo/client";
 
 export default function Homepage() {
-  const data = useLoaderData() as loaderData;
+  const queryRef = useLoaderData() as loaderData;
+  const response = useReadQuery(queryRef);
+
+  if (response.error) throw response.error;
+  const { data } = response.data.reviews;
 
   return (
     <div>
       {data.map(({ id, attributes: review }) => {
         let reviewSnippet = "";
-        const firstRootNode = review.body[0];
-        firstRootNode.children.every((child) => {
+        review.body[0].children.every((child) => {
           if (child.type === "text") {
             reviewSnippet = child.text;
             return false;

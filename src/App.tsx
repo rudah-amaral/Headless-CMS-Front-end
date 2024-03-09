@@ -1,9 +1,13 @@
+import { Suspense } from "react";
 import {
   Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "./apolloLogic.ts";
 
 // Layouts
 import SiteHeader from "./components/SiteHeader.tsx";
@@ -26,7 +30,11 @@ const router = createBrowserRouter(
     <Route path="/" element={<SiteHeader />}>
       <Route
         index
-        element={<Homepage />}
+        element={
+          <Suspense fallback={<p>Loading all reviews...</p>}>
+            <Homepage />
+          </Suspense>
+        }
         loader={homepageLoader}
         errorElement={<HomepageError />}
       />
@@ -44,7 +52,9 @@ const router = createBrowserRouter(
 export default function App() {
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <ApolloProvider client={apolloClient}>
+        <RouterProvider router={router} />
+      </ApolloProvider>
     </div>
   );
 }
