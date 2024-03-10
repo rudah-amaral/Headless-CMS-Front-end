@@ -40,7 +40,11 @@ const router = createBrowserRouter(
       />
       <Route
         path="/details/:id"
-        element={<ReviewDetails />}
+        element={
+          <Suspense fallback={<p>Loading single review...</p>}>
+            <ReviewDetails />
+          </Suspense>
+        }
         loader={reviewDetailsloader}
         errorElement={<ReviewDetailsError />}
       />

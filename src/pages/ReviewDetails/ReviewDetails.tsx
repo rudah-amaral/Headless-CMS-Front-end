@@ -1,8 +1,13 @@
 import { useLoaderData } from "react-router-dom";
+import { useReadQuery } from "@apollo/client";
 import type { loaderData } from "./loader";
 
 export default function ReviewDetails() {
-  const { attributes: review } = useLoaderData() as loaderData;
+  const queryRef = useLoaderData() as loaderData;
+  const response = useReadQuery(queryRef);
+
+  if (response.error) throw response.error;
+  const { attributes: review } = response.data.review.data;
 
   const reviewBody = review.body.map((rootNode) => {
     return rootNode.children.map((childNode, childIndex) => {
