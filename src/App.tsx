@@ -10,7 +10,7 @@ import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "./apolloLogic.ts";
 
 // Layouts
-import SiteHeader from "./components/SiteHeader.tsx";
+import SiteHeader from "./components/SiteHeader/SiteHeader.tsx";
 
 // Pages
 import Homepage from "./pages/Homepage/Homepage.tsx";
@@ -18,6 +18,7 @@ import ReviewDetails from "./pages/ReviewDetails/ReviewDetails.tsx";
 import Category from "./pages/Category/Category.tsx";
 
 // loaders
+import siteHeaderLoader from "./components/SiteHeader/loader.ts";
 import homepageLoader from "./pages/Homepage/loader.ts";
 import reviewDetailsloader from "./pages/ReviewDetails/loader.ts";
 
@@ -27,7 +28,7 @@ import ReviewDetailsError from "./pages/ReviewDetails/Error.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<SiteHeader />}>
+    <Route path="/" element={<SiteHeader />} loader={siteHeaderLoader}>
       <Route
         index
         element={
