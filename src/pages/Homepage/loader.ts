@@ -11,12 +11,20 @@ const GET_REVIEWS = gql`
   query GetReviews {
     reviews {
       data {
+        id
         attributes {
           title
           rating
           body
+          categories {
+            data {
+              id
+              attributes {
+                name
+              }
+            }
+          }
         }
-        id
       }
     }
   }

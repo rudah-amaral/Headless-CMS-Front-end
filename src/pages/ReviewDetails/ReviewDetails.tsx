@@ -22,7 +22,9 @@ export default function ReviewDetails() {
         <h2>{review.title}</h2>
         <div className="rating">{review.rating}</div>
 
-        <small>console list</small>
+        {review.categories?.data.map((category) => (
+          <small key={category.id}>{category.attributes.name}</small>
+        ))}
         <p>{reviewBody}</p>
       </div>
     </div>

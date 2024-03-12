@@ -12,12 +12,19 @@ const GET_REVIEW = gql`
   query GetReview($id: ID!) {
     review(id: $id) {
       data {
+        id
         attributes {
           title
           rating
           body
+          categories {
+            data {
+              attributes {
+                name
+              }
+            }
+          }
         }
-        id
       }
     }
   }
