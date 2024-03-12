@@ -21,6 +21,7 @@ import Category from "./pages/Category/Category.tsx";
 import siteHeaderLoader from "./components/SiteHeader/loader.ts";
 import homepageLoader from "./pages/Homepage/loader.ts";
 import reviewDetailsloader from "./pages/ReviewDetails/loader.ts";
+import categoryLoader from "./pages/Category/loader.ts";
 
 // Errors
 import HomepageError from "./pages/Homepage/Error.tsx";
@@ -49,7 +50,15 @@ const router = createBrowserRouter(
         loader={reviewDetailsloader}
         errorElement={<ReviewDetailsError />}
       />
-      <Route path="/category/:id" element={<Category />} />
+      <Route
+        path="/category/:id"
+        element={
+          <Suspense fallback={<p>Loading category reviews...</p>}>
+            <Category />
+          </Suspense>
+        }
+        loader={categoryLoader}
+      />
     </Route>,
   ),
 );
