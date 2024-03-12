@@ -7,6 +7,8 @@ interface AllReviewsQuery {
   reviews: APIResponseCollection<"api::review.review">;
 }
 
+export type ReviewData = AllReviewsQuery["reviews"]["data"][number];
+
 const GET_REVIEWS = gql`
   query GetReviews {
     reviews {
