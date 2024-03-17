@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { useReadQuery } from "@apollo/client";
 import type { loaderData } from "./loader";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 export default function ReviewDetails() {
   const queryRef = useLoaderData() as loaderData;
@@ -8,13 +9,6 @@ export default function ReviewDetails() {
 
   if (response.error) throw response.error;
   const { attributes: review } = response.data.review.data;
-
-  const reviewBody = review.body.map((rootNode) => {
-    return rootNode.children.map((childNode, childIndex) => {
-      if (childNode.type === "text")
-        return <p key={childIndex}>{childNode.text}</p>;
-    });
-  });
 
   return (
     <div>
@@ -25,7 +19,7 @@ export default function ReviewDetails() {
         {review.categories?.data.map((category) => (
           <small key={category.id}>{category.attributes.name}</small>
         ))}
-        <p>{reviewBody}</p>
+        <BlocksRenderer content={review.body} />
       </div>
     </div>
   );
