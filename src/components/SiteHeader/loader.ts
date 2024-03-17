@@ -20,6 +20,6 @@ const GET_CATEGORIES = gql`
   }
 `;
 
-export default async function loader() {
+export default function loader() {
   return queryPreloader<AllReviewsQuery>(GET_CATEGORIES);
 }

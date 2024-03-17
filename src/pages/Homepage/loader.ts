@@ -32,6 +32,6 @@ const GET_REVIEWS = gql`
   }
 `;
 
-export default async function loader() {
+export default function loader() {
   return queryPreloader<AllReviewsQuery>(GET_REVIEWS);
 }

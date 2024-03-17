@@ -39,7 +39,7 @@ const GET_CATEGORY_REVIEWS = gql`
   }
 `;
 
-export default async function loader({ params }: LoaderFunctionArgs) {
+export default function loader({ params }: LoaderFunctionArgs) {
   return queryPreloader<CategoryReviews>(GET_CATEGORY_REVIEWS, {
     variables: { id: params.id },
   });
