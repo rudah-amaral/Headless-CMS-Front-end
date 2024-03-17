@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# Headless CMS Front end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project contains the Front end of a video-game reviews' website. Its
+purpose is to render layouts on the client side based on data received by
+Strapi's API. You can access the project containing the Back end
+[here](https://github.com/rudah-amaral/Headless-CMS-Back-end).
 
-Currently, two official plugins are available:
+## What's a Headless CMS anyway?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Traditional CMSes couple the content with the view, limiting the user to create
+layouts only with one of his platform's available templates. Cutting off the
+"head" means to remove this highly coupled view and to provide direct access
+to the underlying content through a REST API or GraphQL client.
 
-## Expanding the ESLint configuration
+This architecture empowers developers into implementing custom (and possibly
+multiple) views while not having to mind the content itself, but only its shape.
+Meanwhile, clients, editors, writers, etc. can focus only on the
+content without depending on the development team.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Credits
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This project is a result from Net Ninja's code-along
+[Strapi Crash Course (with React & GraphQL)](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h6OY8_8Oq6JerWqsKdAPxn).
+My own modifications include using Vite instead of create-react-app as my
+project scaffolder, TypeScript instead of JavaScript and adapting the code to
+work with the dependencies latest releases.
